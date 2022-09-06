@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Repairs</title>
+    <link rel = "stylesheet" href = "/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div clas = "container">
+        <header>
+            <h1>¡! Robot Industries</h1>
+            <div class = "logo">
+                <h1 id="rosa">
+                    THR <h1 id="blue">3D</h1>
+                </h1>
+            </div>
+            <div class = "logo">
+                <a href="/logout" class="go2">Logout</a>
+                <a href="/dashboard" class="go2">Back</a>
+            </div>
+        </header>
+        <div class ='Principal2'>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Logo</th>
+                        <th>Tittle</th>
+                        <th>Description</th>
+                        <th>User type</th>
+                        <th>Designer</th>
+                        <th>Size</th>
+                        <th>Action</th>
+                        <th>Likes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in designs %}
+                    <tr>
+                        <td><img src="{{ url_for('static', filename='images/'+ x.logo)}}" alt="" class="img"></td>
+                        <td>{{x.tittle}}</td>
+                        <td>{{x.description}}</td>
+                        <td>{{x.user_type}}</td>
+                        <td>{{x.first_name}}</td>
+                        <td>
+                            {% if x.size == 0 %}
+                                Mini
+                            {% else %}
+                                Big
+                            {% endif %}
+                        </td>
+                        <td class = "flex"> 
+                            <a href="{{ url_for('static', filename='images/'+ x.STL)}}" class="go2" download>STL</a>
+                            <a href="{{ url_for('static', filename='images/'+ x.logo)}}" class="go2" download>LOGO</a>
+                                        <!--Going to print-->
+                            <a href="/print/{{x.id}}" class="go">To buy</a>
+                            <form action="/like" method="post" class = "form">
+                                <input type="hidden" name="Drawing_id" value = "{{x.id}}">
+                                <input type="hidden" name="User_id" value = "{{user.id}}">
+                                <input type="submit" value = "Like" class="go">
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    <script src = "../static/js/script.js"></script>
+</body>
+</html>

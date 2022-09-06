@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawings</title>
+    <link rel = "stylesheet" href = "../static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h1>¡! Robot Industries</h1>
+        <div class = "logo">
+            <h1 id="rosa">
+                THR <h1 id="blue">3D</h1>
+            </h1>
+        </div>
+        <div class = "logo">
+            <a href="/logout" class="go2">Logout</a>
+            <a href="/dashboard" class="go2">Back</a>
+        </div>
+    </header>
+    <div class="Principal">
+        <div class = "row1">
+            <img src="/static/images/img1.jpeg" id = "img" class = "img1" onmouseover="changeImg()" onmouseleave="changeImg()" alt="print">
+        </div>
+        <div class="Registro">
+            <h2 class ="title">Drawings</h2>
+            {% with messages = get_flashed_messages(category_filter=['draw']) %}
+                {% if messages %}
+                    <div class="alert alert-danger">
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <form action="/new/draw" method="post" class = "form" enctype="multipart/form-data"> 
+                <input type="hidden" name = "User_id" value="{{user.id}}">
+                <div class="form-group">
+                    <label for="tittle" class ="title2">Tittle</label>
+                    <input type="text" id="tittle" name="tittle" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="description" class ="title2">Description</label>
+                    <input type="text" id="description" name="description" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="type" class ="title2">Type</label>
+                    <select name="type" id="type" class="form-control">
+                        <option value=" "> </option>
+                        <option value="Hobbie">Hobbie</option>
+                        <option value="Enginner">Enginner</option>
+                        <option value="Services">Services</option>
+                        <option value="Health">Health</option>
+                    </select>
+                </div>
+                <div class="form-group" id = "flex">
+                    <label class ="title2">Size Draw</label>
+                    <input type="radio" name="size" id="Yes" value="1" checked>
+                    <label for="size" class ="title2">Minimalist</label>
+                    <input type="radio" name="size" id="Big" value="0">
+                    <label for="size" class ="title2">Big</label>
+                </div>
+                <div class="form-group">
+                    <label for="STL" class ="title2">STL</label>
+                    <input type="file" name="STL" id="STL" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="logo" class ="title2">logo</label>
+                    <input type="file" name="logo" id="logo" class="form-control">
+                </div>
+                <div class = "buttons">
+                    <input type="submit" value="Save" class="go">
+                    <a href="/login/view" class="go">Login</a> 
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src = "../static/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel = "stylesheet" href = "../static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>¡! Robot Industries</h1>
+        <div class = "logo">
+            <h1 id="rosa">
+                THR <h1 id="blue">3D</h1>
+            </h1>
+        </div>
+        <div class = "logo">
+            <a href="/logout" class="go2">Logout</a>
+        </div>
+    </header>
+    <div class="Principal2">
+        <h2 class ="title">Welcome {{user.first_name}}</h2>
+        <h2 class ="title">¿What would you like to do?</h2>
+        <div class="flexi">
+            <div>
+                <!--Going to machine damage-->
+                <a href="/machines" class="go">Faulty machine</a>
+            </div>
+            <div>
+                <!--Going to repairs-->
+                <a href="/MyRepairs" class="go">My repairs</a>
+            </div>
+            <div>
+                <!--Going to submit desing-->
+                <a href="/newdraw" class="go">Submit design</a>   
+            </div>
+            <div>                
+                <!--Going to my ddesigns-->
+                <a href="/viewdraw" class="go">My designs</a>
+            </div>
+            <div>
+                <!--Going to all ddesigns-->
+                <a href="/alldesigns" class="go">All designs</a>
+            </div>
+        </div>
+        <div class = "buttons">
+            <a href="/logout" class="go">Logout</a>
+        </div>
+    </div>
+    <script src = "../static/js/script.js"></script>
+</body>
+</html>

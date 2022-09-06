@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Fail</title>
+    <link rel = "stylesheet" href ="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>¡! Robot Industries</h1>
+        <div class = "logo">
+            <h1 id="rosa">
+                THR3 <h1 id="blue">3D</h1>
+            </h1>
+        </div>
+    </header>
+    <div>
+        {% with messages = get_flashed_messages(category_filter=['create']) %}
+            {% if messages %}
+                <div class="alert alert-danger">
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+    </div>
+    <div class="Principal">
+        <div class="Registro">
+            <h2 class ="title">Your machine</h2>
+            <h2>Sorry :( ---->> Your machine {{fail.model}} have a fault. Please
+                get us a description of fault.
+            </h2>
+            <form action="/update/repair" method="post" class = "form"> 
+                <input type="hidden" name = "Machine_id" value="{{fail.Machine_id}}">
+                <input type="hidden" name = "User_id" value="{{user.id}}">
+                <div class="form-group">
+                    <label for="description" class ="title2">Description</label>
+                    <input type="text" name="description" class="form-control" value="{{fail.description}}"">
+                </div>
+                <div class="form-group">
+                    <label for="failure" class ="title2">Failure</label>
+                    <input type="text" name="failure" class="form-control" value="{{fail.failure}}">
+                </div>
+                <div class = "buttons">
+                    <input type="submit" value="Carry-->" class="go">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

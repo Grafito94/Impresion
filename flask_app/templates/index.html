@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login y Registro</title>
+    <link rel = "stylesheet" href = "../static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h1>¡! Robot Industries</h1>
+        <div class = "logo">
+            <h1 id="rosa">
+                THR3 <h1 id="blue">3D</h1>
+            </h1>
+        </div>
+    </header>
+    <div class="Principal">
+
+        <div class="Registro">
+            <h2 class ="title">Register</h2>
+            {% with messages = get_flashed_messages(category_filter=['registro']) %}
+                {% if messages %}
+                    <div class="alert alert-danger">
+                        {% for message in messages %}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
+            <form action="/registrate" method="post" class = "form"> 
+                <div class="form-group">
+                    <label for="first_name" class ="title2">Name</label>
+                    <input type="text" id="first_name" name="first_name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="last_name" class ="title2">Last name</label>
+                    <input type="text" id="last_name" name="last_name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email" class ="title2">E-mail</label>
+                    <input type="text" id="email" name="email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="user_type" class ="title2">User tipe</label>
+                    <select name="user_type" id="user_type" class="form-control">
+                        <option value=" "> </option>
+                        <option value="Hobbie">Hobbie</option>
+                        <option value="Enginner">Enginner</option>
+                        <option value="Services">Services</option>
+                        <option value="Health">Health</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="password" class ="title2">Password</label>
+                    <input type="password" id="password" name="password" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password" class ="title2">Confirm Password</label>
+                    <input type="password" id="confirm_password" name="confirm_password" class="form-control">
+                </div>
+                <div class = "buttons">
+                    <input type="submit" value="Go" class="go">
+                </div>
+                <div class = "buttons">
+                    <a href="/login/view" class="go">Login</a> 
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src = "../static/js/script.js"></script>
+</body>
+</html>
